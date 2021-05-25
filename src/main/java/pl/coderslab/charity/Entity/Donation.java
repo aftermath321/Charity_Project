@@ -4,12 +4,17 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
-@Entity
-@Table(name = "Donation")
+@Entity(name = "Donation")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -20,6 +25,8 @@ public class Donation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @NotNull
+    @Min(value = 1)
     private Integer quantity;
 
     @ManyToOne
@@ -28,11 +35,23 @@ public class Donation {
     @OneToOne
     private Institution institution;
 
+    @NotBlank
     private String street;
+
+    @NotBlank
     private String city;
+
+    @Pattern(regexp = "^$|^([0-9]){2}-([0-9]){3}$")
+    @NotBlank
     private String zipCode;
+
+    @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickUpDate;
-    private LocalDate pickUpTime;
+
+    @NotNull
+    private LocalTime pickUpTime;
+
     private String pickUpComment;
 
     @Override

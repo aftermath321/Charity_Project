@@ -6,9 +6,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table (name = "Institution ")
+@Table (name = "Institution")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -19,7 +20,10 @@ public class Institution {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @NotBlank
     private String name;
+
+    @NotBlank
     private String description;
 
     @Override

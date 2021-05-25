@@ -35,4 +35,14 @@ public class HomeController {
     public List<Institution> institutionList () {
         return institutionServices.getInstitutionList();
     }
+
+    @ModelAttribute("quantityCount")
+    public Integer quantityCount(){
+        return donationServices.countQuantity();
+    }
+
+    @ModelAttribute("donationCount")
+    public int donationCount (){
+        return donationServices.countDonations();
+    }
 }
