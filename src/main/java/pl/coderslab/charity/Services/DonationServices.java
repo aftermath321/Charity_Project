@@ -23,4 +23,8 @@ public class DonationServices {
         List<Donation> list = donationRepository.findAll();
         return list.size();
     }
+
+    public void save (Donation donation){
+        donationRepository.save(donation);
+    }
 }

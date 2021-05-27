@@ -32,9 +32,6 @@ public class Donation {
     @ManyToOne
     private Category categories;
 
-    @OneToOne
-    private Institution institution;
-
     @NotBlank
     private String street;
 
@@ -53,6 +50,10 @@ public class Donation {
     private LocalTime pickUpTime;
 
     private String pickUpComment;
+
+    @ManyToOne
+    @JoinColumn(name = "institution_id")
+    private Institution institution;
 
     @Override
     public String toString() {

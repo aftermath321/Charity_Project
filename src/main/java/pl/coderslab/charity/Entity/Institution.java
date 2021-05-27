@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 @Entity
 @Table (name = "Institution")
@@ -25,6 +26,9 @@ public class Institution {
 
     @NotBlank
     private String description;
+
+    @OneToMany(mappedBy = "institution")
+    private List<Donation> donations;
 
     @Override
     public String toString() {
