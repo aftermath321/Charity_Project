@@ -19,7 +19,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@RequestMapping
+//@RequestMapping("/donation")
 public class DonationController {
 
     final private CategoryServices categoryServices;

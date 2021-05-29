@@ -1,9 +1,6 @@
 package pl.coderslab.charity.Entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -13,12 +10,15 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "Donation")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 public class Donation {
 
     @Id
@@ -28,9 +28,6 @@ public class Donation {
     @NotNull
     @Min(value = 1)
     private Integer quantity;
-
-    @ManyToOne
-    private Category categories;
 
     @NotBlank
     private String street;
@@ -54,6 +51,9 @@ public class Donation {
     @ManyToOne
     @JoinColumn(name = "institution_id")
     private Institution institution;
+
+    @ManyToMany
+    private List<Category> categories = new ArrayList<>();
 
     @Override
     public String toString() {
