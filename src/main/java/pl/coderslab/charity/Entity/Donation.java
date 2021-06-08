@@ -13,7 +13,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity(name = "Donation")
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor
@@ -35,7 +35,7 @@ public class Donation {
     @NotBlank
     private String city;
 
-    @Pattern(regexp = "^$|^([0-9]){2}-([0-9]){3}$")
+    @Pattern(regexp = "^$|^([0-9]){2}-([0-9]){3}$", message = "Wprowadz poprawny kod pocztowy")
     @NotBlank
     private String zipCode;
 
@@ -49,7 +49,6 @@ public class Donation {
     private String pickUpComment;
 
     @ManyToOne
-    @JoinColumn(name = "institution_id")
     private Institution institution;
 
     @ManyToMany

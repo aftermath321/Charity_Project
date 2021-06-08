@@ -6,11 +6,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import java.util.List;
+import javax.validation.constraints.NotEmpty;
+
 
 @Entity
-@Table (name = "Institution")
+@Table(name = "institutions")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -19,16 +19,15 @@ public class Institution {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
-    @NotBlank
+    @NotEmpty(message = "null")
+    @Column
     private String name;
 
-    @NotBlank
+    @NotEmpty(message = "null")
+    @Column
     private String description;
-
-    @OneToMany(mappedBy = "institution")
-    private List<Donation> donations;
 
     @Override
     public String toString() {

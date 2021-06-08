@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.Entity.Institution;
-import pl.coderslab.charity.Repository.InstitutionRepository;
 import pl.coderslab.charity.Services.CategoryServices;
 import pl.coderslab.charity.Services.DonationServices;
 import pl.coderslab.charity.Services.InstitutionServices;
@@ -18,27 +17,26 @@ import java.util.List;
 @AllArgsConstructor
 public class HomeController {
 
-    final private CategoryServices categoryServices;
     final private DonationServices donationServices;
     final private InstitutionServices institutionServices;
 
     @RequestMapping("/")
-    public String homeAction(Model model){
+    public String homeAction(Model model) {
         return "index";
     }
 
     @ModelAttribute("institutions")
-    public List<Institution> institutionList () {
+    public List<Institution> institutionList() {
         return institutionServices.getInstitutionList();
     }
 
     @ModelAttribute("quantityCount")
-    public Integer quantityCount(){
+    public Integer quantityCount() {
         return donationServices.countQuantity();
     }
 
     @ModelAttribute("donationCount")
-    public int donationCount (){
+    public int donationCount() {
         return donationServices.countDonations();
     }
 }

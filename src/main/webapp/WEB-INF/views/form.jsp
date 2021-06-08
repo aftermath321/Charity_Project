@@ -14,8 +14,7 @@
     <link rel="stylesheet" href="<c:url value="resources/css/style.css"/>"/>
 </head>
 <body>
-
-        <%@include file="header2.jsp" %>
+        <%@include file="header.jsp" %>
 
 
 <section class="form--steps">
@@ -48,11 +47,12 @@
                 <c:forEach items="${categories}" var="category">
                     <div class="form-group form-group--checkbox">
                         <label>
-                            <input type="checkbox" name="categories"  data-name="${category.name}" value="${category.name}"/>
+                            <input id="${category.name}" type="checkbox" value="${category.id}" name="categories"/>
                             <span class="checkbox"></span>
                             <span class="description">${category.name}</span>
                         </label>
                     </div>
+
                 </c:forEach>
 
                 <div class="form-group form-group--buttons">
@@ -67,7 +67,7 @@
                 <div class="form-group form-group--inline">
                     <label>
                         Liczba 60l worków:
-                        <form:input path="quantity" type="number" name="bags" step="1" min="1"/>
+                        <form:input id="quantity" path="quantity" type="number" name="bags" step="1" min="1"/>
                     </label>
                 </div>
 
@@ -83,7 +83,7 @@
                 <c:forEach items="${institutions}" var="institution">
                     <div class="form-group form-group--checkbox">
                         <label>
-                            <form:radiobutton path="institution" value="${institution.id}" data-name="${institution.name}"/>
+                            <input id="${institution.id}" type="radio" value="${institution.id}"  name="institution"/>
                             <span class="checkbox radio"></span>
                             <span class="description">
                 <div class="title">${institution.name}</div>
@@ -107,16 +107,19 @@
                     <div class="form-section--column">
                         <h4>Adres odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Ulica <form:input id="street" path="street" /><form:errors path="street" cssClass="error"/> </label>
+                            <label> Ulica <form:input id="street" path="street" />
+                                </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Miasto <form:input id="city" path="city"/><form:errors path="city" cssClass="error"/> </label>
+                            <label> Miasto <form:input id="city" path="city"/>
+                                 </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Kod pocztowy <form:input id="zipCode" path="zipCode"/><form:errors path="zipCode" cssClass="error"/>
+                                Kod pocztowy <form:input id="zipCode" path="zipCode"/>
+
                             </label>
                         </div>
 
@@ -125,11 +128,13 @@
                     <div class="form-section--column">
                         <h4>Termin odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Data <form:input id="date" path="pickUpDate" type="date"/><form:errors path="pickUpDate" cssClass="error"/> </label>
+                            <label> Data <form:input id="date" path="pickUpDate" type="date"/>
+                               </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Godzina <form:input id="time" path="pickUpTime" type="time"/><form:errors path="pickUpTime" cssClass="error"/> </label>
+                            <label> Godzina <form:input id="time" path="pickUpTime" type="time"/>
+                                 </label>
                         </div>
 
                         <div class="form-group form-group--inline">
